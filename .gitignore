@@ -6,8 +6,6 @@ NCM-Studio/
 
 # 编辑器与本地配置
 .vscode/
-.claude/
-CLAUDE.md
 
 # 系统杂项
 .DS_Store
