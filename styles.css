@@ -998,6 +998,12 @@ a:hover > .arrow,
 }
 .friend-card {
   position: relative;
+  display: block;
+  border-radius: 6px;
+  color: var(--ink);
+  text-decoration: none;
+}
+.friend-visual {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1005,8 +1011,6 @@ a:hover > .arrow,
   padding: 1rem clamp(1.25rem, 3vw, 2rem);
   overflow: hidden;
   border-radius: 6px;
-  color: var(--ink);
-  text-decoration: none;
   transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.35s ease;
 }
 .friend-bg {
@@ -1018,7 +1022,7 @@ a:hover > .arrow,
   background-color: var(--friend-color, #5b9bd5);
   transition: height 0.45s cubic-bezier(0.22, 1, 0.36, 1), border-radius 0.45s cubic-bezier(0.22, 1, 0.36, 1);
 }
-.friend-card:hover {
+.friend-card:hover .friend-visual {
   transform: translateY(-0.25rem);
   box-shadow: 0 0.85rem 2rem rgba(27, 26, 23, 0.14);
 }
