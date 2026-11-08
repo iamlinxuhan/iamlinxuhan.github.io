@@ -1,0 +1,14 @@
+# 本地参考资料与项目源码，不发布到 GitHub Pages
+yfy0109.github.io/
+GomokuAI/
+NCM-Studio/
+其他相关信息.txt
+
+# 编辑器与本地配置
+.vscode/
+.claude/
+CLAUDE.md
+
+# 系统杂项
+.DS_Store
+Thumbs.db
