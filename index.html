@@ -33,7 +33,7 @@
     <a href="#about">关于</a>
     <a href="#work">作品</a>
     <a href="#life">爱好</a>
-    <a href="#contact">联系</a>
+    <a href="#contact">相关</a>
   </nav>
   <button class="theme" id="theme" type="button" aria-label="切换到暗色主题">
     <span class="theme-dot" aria-hidden="true"></span>
@@ -47,7 +47,8 @@
     <li><a href="#work"><span class="rail-num">02</span><span class="rail-label">作品</span><span class="tick" aria-hidden="true"></span></a></li>
     <li><a href="#life"><span class="rail-num">03</span><span class="rail-label">爱好</span><span class="tick" aria-hidden="true"></span></a></li>
     <li><a href="#quote"><span class="rail-num">04</span><span class="rail-label">格言</span><span class="tick" aria-hidden="true"></span></a></li>
-    <li><a href="#contact"><span class="rail-num">05</span><span class="rail-label">联系</span><span class="tick" aria-hidden="true"></span></a></li>
+    <li><a href="#links"><span class="rail-num">05</span><span class="rail-label">友链</span><span class="tick" aria-hidden="true"></span></a></li>
+    <li><a href="#contact"><span class="rail-num">06</span><span class="rail-label">相关</span><span class="tick" aria-hidden="true"></span></a></li>
   </ol>
 </nav>
 
@@ -126,6 +127,55 @@
             <div class="fact"><dt>主营</dt><dd>NCM-Studio · GomokuAI</dd></div>
             <div class="fact"><dt>状态</dt><dd>保持好奇</dd></div>
           </dl>
+
+          <div class="skills">
+            <div class="skills-head">
+              <h3 class="skills-title">技术栈</h3>
+              <span class="skills-note">在项目里一点点磨出来的</span>
+            </div>
+            <ul class="skill-grid">
+              <li class="skill" style="--level: 88%">
+                <span class="skill-name">Python</span>
+                <span class="skill-track" aria-hidden="true"><span class="skill-fill"></span></span>
+                <span class="skill-value">88%</span>
+              </li>
+              <li class="skill" style="--level: 84%">
+                <span class="skill-name">C++17</span>
+                <span class="skill-track" aria-hidden="true"><span class="skill-fill"></span></span>
+                <span class="skill-value">84%</span>
+              </li>
+              <li class="skill" style="--level: 82%">
+                <span class="skill-name">PyQt6</span>
+                <span class="skill-track" aria-hidden="true"><span class="skill-fill"></span></span>
+                <span class="skill-value">82%</span>
+              </li>
+              <li class="skill" style="--level: 86%">
+                <span class="skill-name">Linux</span>
+                <span class="skill-track" aria-hidden="true"><span class="skill-fill"></span></span>
+                <span class="skill-value">86%</span>
+              </li>
+              <li class="skill" style="--level: 78%">
+                <span class="skill-name">博弈搜索</span>
+                <span class="skill-track" aria-hidden="true"><span class="skill-fill"></span></span>
+                <span class="skill-value">78%</span>
+              </li>
+              <li class="skill" style="--level: 74%">
+                <span class="skill-name">性能优化</span>
+                <span class="skill-track" aria-hidden="true"><span class="skill-fill"></span></span>
+                <span class="skill-value">74%</span>
+              </li>
+              <li class="skill" style="--level: 82%">
+                <span class="skill-name">调试分析</span>
+                <span class="skill-track" aria-hidden="true"><span class="skill-fill"></span></span>
+                <span class="skill-value">82%</span>
+              </li>
+              <li class="skill" style="--level: 86%">
+                <span class="skill-name">Git / 开源</span>
+                <span class="skill-track" aria-hidden="true"><span class="skill-fill"></span></span>
+                <span class="skill-value">86%</span>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
@@ -230,18 +280,66 @@
     </div>
   </section>
 
-  <!-- 05 联系 -->
-  <section class="section" id="contact" data-num="05">
+  <!-- 05 友链 -->
+  <section class="section" id="links" data-num="05" aria-labelledby="links-title">
     <div class="wrap">
       <div class="sec-grid">
         <header class="sec-head reveal">
           <span class="sec-num">05</span>
-          <h2>联系</h2>
-          <span class="sec-en">Contact</span>
+          <h2 id="links-title">友链</h2>
+          <span class="sec-en">Friend Links</span>
         </header>
         <div class="sec-body reveal">
-          <p class="contact-lede">想看看我在写什么，或者只是聊聊 Linux、Qt 和五子棋，从这里找到我。</p>
+          <p class="links-lede">在互联网的另一角，也有人在认真记录。</p>
+          <div class="friend-grid">
+            <a class="friend-card" href="https://yfy0109.top/" target="_blank" rel="noopener" style="--friend-color: #5b9bd5">
+              <span class="friend-bg" aria-hidden="true"></span>
+              <span class="friend-inner">
+                <span class="friend-name">YFY</span>
+                <span class="friend-sep" aria-hidden="true">·</span>
+                <span class="friend-url">yfy0109.top</span>
+              </span>
+            </a>
+            <a class="friend-card" href="https://ziqianou.top/" target="_blank" rel="noopener" style="--friend-color: #aa7770">
+              <span class="friend-bg" aria-hidden="true"></span>
+              <span class="friend-inner">
+                <span class="friend-name">ziqianou</span>
+                <span class="friend-sep" aria-hidden="true">·</span>
+                <span class="friend-url">ziqianou.top</span>
+              </span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 06 联系 -->
+  <section class="section" id="contact" data-num="06">
+    <div class="wrap">
+      <div class="sec-grid">
+        <header class="sec-head reveal">
+          <span class="sec-num">06</span>
+          <h2>相关</h2>
+          <span class="sec-en">Personal</span>
+        </header>
+        <div class="sec-body reveal">
+          <p class="contact-lede">想写封信，或者只是聊聊 Linux、Qt 和五子棋，从这里找到我。</p>
           <ul class="contact">
+            <li>
+              <a href="mailto:2276677131@qq.com">
+                <span class="network">邮箱 · QQ</span>
+                <span class="handle">2276677131@qq.com</span>
+                <span class="arrow" aria-hidden="true">→</span>
+              </a>
+            </li>
+            <li>
+              <a href="mailto:DarkMark_Hacker@outlook.com">
+                <span class="network">邮箱 · Outlook</span>
+                <span class="handle">DarkMark_Hacker@outlook.com</span>
+                <span class="arrow" aria-hidden="true">→</span>
+              </a>
+            </li>
             <li>
               <a href="https://github.com/iamlinxuhan" target="_blank" rel="noopener">
                 <span class="network">GitHub</span>
@@ -252,6 +350,20 @@
             <li>
               <a href="https://space.bilibili.com/2109108132" target="_blank" rel="noopener">
                 <span class="network">Bilibili</span>
+                <span class="handle">DarkMark_Hacker</span>
+                <span class="arrow" aria-hidden="true">↗</span>
+              </a>
+            </li>
+            <li>
+              <a href="https://music.163.com/#/user/home?id=12282942313" target="_blank" rel="noopener">
+                <span class="network">网易云音乐</span>
+                <span class="handle">DarkMark_Hacker</span>
+                <span class="arrow" aria-hidden="true">↗</span>
+              </a>
+            </li>
+            <li>
+              <a href="https://steamcommunity.com/id/DarkMark_Hacker/" target="_blank" rel="noopener">
+                <span class="network">Steam</span>
                 <span class="handle">DarkMark_Hacker</span>
                 <span class="arrow" aria-hidden="true">↗</span>
               </a>

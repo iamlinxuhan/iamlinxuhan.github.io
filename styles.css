@@ -666,6 +666,98 @@ html.js .reveal.is-visible {
 .fact dt { color: var(--muted); }
 .fact dd { margin: 0; text-align: right; }
 
+/* 技能条 */
+.skills {
+  margin-top: clamp(2.5rem, 5vw, 3.5rem);
+  padding-top: clamp(1.5rem, 3vw, 2rem);
+  border-top: 1px solid var(--line);
+}
+.skills-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.6rem;
+}
+.skills-title {
+  margin: 0;
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  font-weight: 400;
+  letter-spacing: 0.2em;
+  color: var(--muted);
+}
+.skills-note {
+  font-size: 0.88rem;
+  color: var(--muted);
+}
+.skill-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.15rem clamp(1.75rem, 4vw, 3rem);
+  max-width: 56rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.skill {
+  display: grid;
+  grid-template-columns: 6.5rem minmax(0, 1fr) 2.6rem;
+  align-items: center;
+  gap: 0.9rem;
+}
+.skill-name {
+  font-family: var(--mono);
+  font-size: 0.64rem;
+  letter-spacing: 0.08em;
+  white-space: nowrap;
+}
+.skill-track {
+  position: relative;
+  height: 2px;
+  background: var(--line);
+}
+.skill-fill {
+  position: absolute;
+  inset: 0 auto 0 0;
+  display: block;
+  width: 0;
+  opacity: 0;
+  border-radius: 2px;
+  background: var(--accent);
+  transition: width 1.1s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.3s ease;
+}
+.skill-fill::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 0;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--accent);
+  transform: translate(50%, -50%);
+}
+.reveal.is-visible .skill-fill,
+html:not(.js) .skill-fill {
+  width: var(--level);
+  opacity: 1;
+}
+.skill:nth-child(2) .skill-fill { transition-delay: 0.08s; }
+.skill:nth-child(3) .skill-fill { transition-delay: 0.16s; }
+.skill:nth-child(4) .skill-fill { transition-delay: 0.24s; }
+.skill:nth-child(5) .skill-fill { transition-delay: 0.32s; }
+.skill:nth-child(6) .skill-fill { transition-delay: 0.4s; }
+.skill:nth-child(7) .skill-fill { transition-delay: 0.48s; }
+.skill:nth-child(8) .skill-fill { transition-delay: 0.56s; }
+.skill-value {
+  font-family: var(--mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+  text-align: right;
+}
+
 /* ─────────────────────────────────────────────
    07. 作品
    ───────────────────────────────────────────── */
@@ -841,7 +933,83 @@ a:hover > .arrow,
 }
 
 /* ─────────────────────────────────────────────
-   10. 联系
+   10. 友链
+   ───────────────────────────────────────────── */
+.links-lede {
+  max-width: 40ch;
+  margin: 0 0 2rem;
+  font-size: 1.02rem;
+  color: var(--muted);
+}
+.friend-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr));
+  gap: clamp(0.9rem, 2vw, 1.35rem);
+  max-width: 56rem;
+}
+.friend-card {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: clamp(5.5rem, 9vw, 7rem);
+  padding: 1rem clamp(1.25rem, 3vw, 2rem);
+  overflow: hidden;
+  border-radius: 6px;
+  color: var(--ink);
+  text-decoration: none;
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.35s ease;
+}
+.friend-bg {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: var(--friend-color, #5b9bd5);
+  transition: height 0.45s cubic-bezier(0.22, 1, 0.36, 1), border-radius 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.friend-card:hover {
+  transform: translateY(-0.25rem);
+  box-shadow: 0 0.85rem 2rem rgba(27, 26, 23, 0.14);
+}
+.friend-card:hover .friend-bg {
+  height: 100%;
+  border-radius: 6px;
+}
+.friend-inner {
+  position: relative;
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  text-align: center;
+  transition: color 0.3s ease;
+}
+.friend-name {
+  font-family: var(--display);
+  font-size: clamp(1.45rem, 1.15rem + 0.9vw, 1.9rem);
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: 0.14em;
+}
+.friend-sep {
+  color: rgba(27, 26, 23, 0.32);
+  transition: color 0.3s ease;
+}
+.friend-url {
+  font-family: var(--mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.14em;
+  color: rgba(27, 26, 23, 0.55);
+  transition: color 0.3s ease;
+}
+.friend-card:hover .friend-sep { color: rgba(27, 26, 23, 0.55); }
+.friend-card:hover .friend-url { color: var(--ink); }
+
+/* ─────────────────────────────────────────────
+   11. 联系
    ───────────────────────────────────────────── */
 .contact-lede {
   max-width: 40ch;
@@ -857,7 +1025,7 @@ a:hover > .arrow,
 }
 .contact a {
   display: grid;
-  grid-template-columns: 7rem minmax(0, 1fr) auto;
+  grid-template-columns: 8.5rem minmax(0, 1fr) auto;
   gap: 1rem;
   align-items: baseline;
   padding: 1.45rem 0;
@@ -872,19 +1040,20 @@ a:hover > .arrow,
 }
 .contact .network {
   font-family: var(--mono);
-  font-size: 0.6rem;
-  letter-spacing: 0.18em;
+  font-size: 0.85rem;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--muted);
 }
 .contact .handle {
   font-size: clamp(1.15rem, 1rem + 0.55vw, 1.45rem);
   letter-spacing: 0.01em;
+  overflow-wrap: anywhere;
 }
 .contact .arrow { font-size: 0.85rem; }
 
 /* ─────────────────────────────────────────────
-   11. 页脚
+   12. 页脚
    ───────────────────────────────────────────── */
 .footer {
   padding-block: 2.75rem 3rem;
@@ -943,7 +1112,7 @@ a:hover > .arrow,
 }
 
 /* ─────────────────────────────────────────────
-   12. 响应式
+   13. 响应式
    ───────────────────────────────────────────── */
 @media (max-width: 900px) {
   .vertical { display: none; }
@@ -977,6 +1146,7 @@ a:hover > .arrow,
   .sec-en { margin-left: auto; }
 
   .facts { grid-template-columns: 1fr; }
+  .skill-grid { grid-template-columns: 1fr; }
   .project { grid-template-columns: 1fr; gap: 0.4rem; }
   .project-index { padding-top: 0; }
   .rows li { grid-template-columns: 1fr; gap: 0.35rem; }
@@ -995,7 +1165,7 @@ a:hover > .arrow,
 }
 
 /* ─────────────────────────────────────────────
-   13. 动效偏好 / 打印
+   14. 动效偏好 / 打印
    ───────────────────────────────────────────── */
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
@@ -1017,5 +1187,6 @@ a:hover > .arrow,
     font-size: 11pt;
   }
   .hero-contours, .hero-mark { display: none !important; }
+  .skill-fill { width: var(--level) !important; opacity: 1 !important; }
   a { text-decoration: none; }
 }
