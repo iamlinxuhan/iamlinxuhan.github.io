@@ -14,6 +14,9 @@
 /* ── 页首 ───────────────────────────────────── */
 .project-hero {
   position: relative;
+  /* 页首装饰的边长与右侧距离；正文留白也按这两个值算，改一处即可 */
+  --art-size: clamp(14rem, 27vw, 34rem);
+  --art-right: clamp(1.5rem, 8vw, 10rem);
   padding-top: calc(var(--header-h) + clamp(3rem, 9vw, 7rem));
   padding-bottom: clamp(2.5rem, 6vw, 4.5rem);
 }
@@ -26,6 +29,181 @@
   margin-top: clamp(2rem, 4vw, 3rem);
   background: var(--accent);
   opacity: 0.85;
+}
+
+/* 页首装饰：贴着视口右侧的留白，尺寸用 rem + vw，随字号与视口一起缩放。 */
+.hero-art {
+  position: absolute;
+  top: calc(50% + 2rem);
+  right: var(--art-right);
+  z-index: 0;
+  width: var(--art-size);
+  transform: translateY(-50%);
+  color: var(--ink);
+  pointer-events: none;
+  user-select: none;
+}
+
+.project-hero .wrap > :not(.hero-art) {
+  position: relative;
+  z-index: 1;
+}
+
+.hero-art svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+/* 五子棋：米黄底上的同色系细网格 + 略深的棋子 */
+.hero-art--board .grid {
+  fill: none;
+  stroke: var(--line);
+  stroke-width: 1;
+}
+
+.hero-art--board .hoshi {
+  fill: var(--line);
+}
+
+.hero-art--board .stone-black {
+  fill: color-mix(in srgb, var(--ink) 22%, var(--paper));
+}
+
+.hero-art--board .stone-white {
+  fill: var(--paper);
+  stroke: color-mix(in srgb, var(--ink) 30%, var(--paper));
+  stroke-width: 2;
+}
+
+/* 黑胶：照搬 NCM-Studio 的 VinylWidget ——
+   盘面径向渐变 + 46 圈沟槽 + 外沿高光，中心圆标放应用图标，
+   唱臂从右上转轴伸向盘外（暂停姿态）。配色跟纸面同色系：米黄盘、深一档的沟槽。 */
+.hero-art--record .stop-hi {
+  stop-color: color-mix(in srgb, var(--ink) 3%, var(--paper));
+}
+.hero-art--record .stop-mid {
+  stop-color: color-mix(in srgb, var(--ink) 7%, var(--paper));
+}
+.hero-art--record .stop-low {
+  stop-color: color-mix(in srgb, var(--ink) 11%, var(--paper));
+}
+
+.hero-art--record .disc-edge {
+  stroke: color-mix(in srgb, var(--ink) 18%, var(--paper));
+  stroke-width: 2.4;
+}
+
+.hero-art--record .grooves circle {
+  fill: none;
+  stroke: color-mix(in srgb, var(--ink) 30%, var(--paper));
+  stroke-width: 1;
+}
+
+.hero-art--record .rim-lit {
+  fill: none;
+  stroke: var(--paper);
+  stroke-opacity: 0.85;
+  stroke-width: 3.2;
+}
+.hero-art--record .rim-cool {
+  fill: none;
+  stroke: var(--accent);
+  stroke-opacity: 0.18;
+  stroke-width: 2.4;
+}
+
+.hero-art--record .label {
+  fill: var(--paper);
+}
+.hero-art--record .label-seam {
+  fill: none;
+  stroke: color-mix(in srgb, var(--ink) 34%, var(--paper));
+  stroke-width: 5.5;
+}
+.hero-art--record .label-edge {
+  fill: none;
+  stroke: var(--ink);
+  stroke-opacity: 0.1;
+  stroke-width: 1.6;
+}
+.hero-art--record .arm-shadow {
+  fill: none;
+  stroke: #000;
+  stroke-opacity: 0.1;
+  stroke-width: 7.9;
+  stroke-linecap: round;
+}
+.hero-art--record .weight-link {
+  fill: none;
+  stroke: var(--muted);
+  stroke-width: 4.4;
+  stroke-linecap: round;
+  opacity: 0.75;
+}
+.hero-art--record .weight {
+  fill: none;
+  stroke: var(--muted);
+  stroke-width: 28.4;
+  stroke-linecap: round;
+}
+.hero-art--record .weight-hi {
+  fill: none;
+  stroke: var(--line);
+  stroke-width: 4;
+  stroke-linecap: round;
+  opacity: 0.85;
+}
+.hero-art--record .arm-outer {
+  fill: none;
+  stroke: var(--muted);
+  stroke-width: 7.9;
+  stroke-linecap: round;
+}
+.hero-art--record .arm-inner {
+  fill: none;
+  stroke: var(--line);
+  stroke-width: 3.2;
+  stroke-linecap: round;
+}
+.hero-art--record .shell {
+  fill: none;
+  stroke: color-mix(in srgb, var(--ink) 55%, var(--paper));
+  stroke-width: 15;
+  stroke-linecap: round;
+}
+.hero-art--record .shell-hi {
+  fill: none;
+  stroke: var(--muted);
+  stroke-width: 2.4;
+  stroke-linecap: round;
+}
+.hero-art--record .pivot-base {
+  fill: color-mix(in srgb, var(--ink) 45%, var(--paper));
+  stroke: var(--line);
+  stroke-width: 2.8;
+}
+.hero-art--record .pivot-mid {
+  fill: var(--paper);
+  stroke: var(--muted);
+  stroke-width: 2.4;
+}
+.hero-art--record .pivot-dot {
+  fill: var(--accent);
+  opacity: 0.8;
+}
+
+/* 唱片比棋盘宽，往左挪一点，视觉重量才和棋盘的右边缘对齐 */
+.page-ncm .project-hero {
+  --art-right: clamp(1.5rem, 13vw, 16rem);
+}
+
+/* 窄屏时让位给正文 */
+@media (max-width: 1000px) {
+  .hero-art {
+    display: none;
+  }
 }
 
 .crumb {
@@ -186,10 +364,10 @@
   border-bottom-color: var(--accent);
 }
 
-/* ── 下载卡片 ───────────────────────────────── */
+/* ── 下载：三张平台卡片，卡内条目沿用主站「相关」的排法 ── */
 .release-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 17rem), 1fr));
+  grid-template-columns: 1fr;
   gap: 1px;
   border: 1px solid var(--line);
   background: var(--line);
@@ -199,8 +377,8 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  gap: 1rem;
-  padding: clamp(1.2rem, 2.4vw, 1.75rem);
+  gap: 0.9rem;
+  padding: clamp(1.15rem, 1.6vw, 1.5rem);
   background: var(--paper);
   transition: background 0.35s ease;
 }
@@ -223,7 +401,7 @@
   align-items: baseline;
   justify-content: space-between;
   gap: 0.75rem;
-  padding-bottom: 0.75rem;
+  padding-bottom: 0.7rem;
   border-bottom: 1px solid var(--line);
 }
 
@@ -241,60 +419,75 @@
   color: var(--muted);
 }
 
+/* 卡内条目：细线分隔 + 悬停左移，与主站「相关」同构 */
 .release-files {
-  display: flex;
-  flex-direction: column;
   margin: 0;
   padding: 0;
   list-style: none;
 }
 .release-files li + li {
-  border-top: 1px solid color-mix(in srgb, var(--line) 65%, transparent);
+  border-top: 1px solid var(--line);
 }
 
 .file-link {
-  position: relative;
-  display: block;
-  padding: 0.62rem 1.35rem 0.62rem 0;
-  color: var(--ink);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  grid-template-areas:
+    "label arrow"
+    "name  arrow";
+  column-gap: 0.75rem;
+  row-gap: 0.25rem;
+  align-items: center;
+  padding: 0.9rem 0;
+  color: inherit;
   text-decoration: none;
-  transition: color 0.25s ease, padding-left 0.25s ease;
+  transition: color 0.25s ease, padding-left 0.35s cubic-bezier(0.22, 1, 0.36, 1);
 }
 .file-link:hover {
+  padding-left: 0.55rem;
   color: var(--accent);
-  padding-left: 0.3rem;
 }
 
 .file-label {
+  grid-area: label;
   display: block;
-  font-size: 0.98rem;
-  line-height: 1.5;
+  font-size: clamp(0.96rem, 0.9rem + 0.2vw, 1.08rem);
+  line-height: 1.45;
 }
 
 .file-name {
+  grid-area: name;
   display: block;
-  margin-top: 0.1rem;
   overflow-wrap: anywhere;
   font-family: var(--mono);
-  font-size: 0.58rem;
+  font-size: 0.62rem;
   letter-spacing: 0.02em;
-  line-height: 1.55;
+  line-height: 1.6;
   color: var(--muted);
 }
 
 .file-arrow {
-  position: absolute;
-  top: 50%;
-  right: 0;
-  transform: translateY(-50%);
+  grid-area: arrow;
+  align-self: center;
   font-family: var(--mono);
   font-size: 0.9rem;
   color: var(--muted);
   transition: transform 0.25s ease, color 0.25s ease;
 }
 .file-link:hover .file-arrow {
-  transform: translateY(calc(-50% + 2px));
+  transform: translateY(2px);
   color: var(--accent);
+}
+
+.release-card.is-empty {
+  background: color-mix(in srgb, var(--paper-2) 30%, var(--paper));
+}
+.release-card.is-empty::before {
+  background: var(--muted);
+  opacity: 0.35;
+}
+.release-card.is-empty .release-os {
+  color: var(--muted);
 }
 
 /* 卡片之外的其他架构下载 */
@@ -360,17 +553,6 @@
 .release-note a:hover {
   color: var(--accent-2);
   border-bottom-color: var(--accent-2);
-}
-
-.release-card.is-empty {
-  background: color-mix(in srgb, var(--paper-2) 30%, var(--paper));
-}
-.release-card.is-empty::before {
-  background: var(--muted);
-  opacity: 0.35;
-}
-.release-card.is-empty .release-os {
-  color: var(--muted);
 }
 
 .download-note {
@@ -692,11 +874,6 @@
   .markdown-body pre { padding: 0.95rem 1rem; }
   .md-copy { opacity: 0.85; }
   .markdown-body th { white-space: normal; }
-}
-
-@media (max-width: 480px) {
-  .release-grid { grid-template-columns: 1fr; }
-  .file-label { font-size: 0.94rem; }
 }
 
 @media (hover: none) {
