@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NCM-Studio — 吝旭涵</title>
+<meta name="description" content="NCM-Studio：网易云音乐的第三方桌面客户端，基于 PyQt6 与 ncmctl，内置 mpv，支持 Windows、Linux 与 macOS。">
+<meta name="theme-color" content="#f4f0e7">
+<meta property="og:type" content="website">
+<meta property="og:title" content="NCM-Studio — 吝旭涵">
+<meta property="og:description" content="网易云音乐的第三方桌面客户端。为 Linux 补上一个轻量的网易云客户端，也补上官方 Web 播放器没有的 MV。">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='9' fill='%23a8342a'/%3E%3Ctext x='32' y='45' font-size='38' font-family='serif' text-anchor='middle' fill='%23f4f0e7'%3E%E5%90%9D%3C/text%3E%3C/svg%3E">
+
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="dns-prefetch" href="https://fastly.jsdelivr.net">
+<link rel="stylesheet" id="wenkai-font"
+      href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-webfont@1.7.0/style.css"
+      onerror="this.onerror=null;this.href='https://fastly.jsdelivr.net/npm/lxgw-wenkai-webfont@1.7.0/style.css'">
+<link rel="stylesheet" href="../styles.css?v=20261108-5">
+<link rel="stylesheet" href="../project.css?v=20261109-1">
+<script src="../script.js?v=20261108-5"></script>
+</head>
+
+<body class="project-page">
+<a class="skip" href="#main">跳到正文</a>
+<div class="progress" id="progress" aria-hidden="true"></div>
+
+<header class="top" id="topbar">
+  <a class="brand" href="../">吝旭涵<span class="brand-latin">/ LIN XUHAN</span></a>
+  <nav class="topnav" aria-label="主导航">
+    <a href="../">首页</a>
+    <a href="../#work">作品</a>
+    <a href="../GomokuAI/">GomokuAI</a>
+    <a href="#downloads">下载</a>
+  </nav>
+  <button class="theme" id="theme" type="button" aria-label="切换到暗色主题">
+    <span class="theme-dot" aria-hidden="true"></span>
+    <span class="theme-text">暗色</span>
+  </button>
+</header>
+
+<main id="main">
+
+  <header class="project-hero">
+    <div class="wrap">
+      <p class="crumb">
+        <a href="../">首页</a><span class="sep" aria-hidden="true">/</span>
+        <a href="../#work">作品</a><span class="sep" aria-hidden="true">/</span>
+        <span>NCM-Studio</span>
+      </p>
+      <p class="kicker">桌面应用 · Python / PyQt6</p>
+      <h1>NCM-Studio <span class="version">v4.0.1</span></h1>
+      <p class="project-lede">
+        网易云音乐的第三方桌面客户端。为 Linux 补上一个轻量的网易云客户端，也补上官方 Web 播放器没有的 MV。
+        内置 ncmctl 与 mpv，下载即用，不需要额外安装 Python 或命令行工具。
+      </p>
+      <ul class="tags">
+        <li>Windows</li>
+        <li>Linux</li>
+        <li>macOS</li>
+        <li>开源</li>
+      </ul>
+      <p class="project-actions">
+        <a class="btn" href="#downloads">下载 <span class="arrow" aria-hidden="true">↓</span></a>
+        <a class="btn btn-ghost" href="https://github.com/iamlinxuhan/NCM-Studio" target="_blank" rel="noopener">GitHub 仓库 <span class="arrow" aria-hidden="true">↗</span></a>
+      </p>
+    </div>
+  </header>
+
+  <section class="project-section" id="downloads" aria-labelledby="downloads-title">
+    <div class="wrap">
+      <div class="p-head">
+        <span class="p-num">01</span>
+        <h2 id="downloads-title">下载</h2>
+        <span class="p-en">Releases</span>
+        <span class="p-en aside">最新版本 · v4.0.1</span>
+      </div>
+
+      <div class="release-grid">
+        <article class="release-card">
+          <div class="release-head">
+            <span class="release-os">Windows</span>
+            <span class="release-arch">x86_64</span>
+          </div>
+          <ul class="release-files">
+            <li>
+              <a class="file-link" href="https://dl.linxuhan.top/NCM-Studio/v4.0.1/ncm-studio-windows-x86_64-setup.exe">
+                <span class="file-label">安装版</span>
+                <span class="file-name">ncm-studio-windows-x86_64-setup.exe</span>
+                <span class="file-arrow" aria-hidden="true">↓</span>
+              </a>
+            </li>
+            <li>
+              <a class="file-link" href="https://dl.linxuhan.top/NCM-Studio/v4.0.1/ncm-studio-windows-x86_64.exe">
+                <span class="file-label">便携版</span>
+                <span class="file-name">ncm-studio-windows-x86_64.exe</span>
+                <span class="file-arrow" aria-hidden="true">↓</span>
+              </a>
+            </li>
+          </ul>
+          <p class="release-note">两个文件内容相同。首次运行可能触发 SmartScreen，选择「更多信息 → 仍要运行」即可。</p>
+        </article>
+
+        <article class="release-card">
+          <div class="release-head">
+            <span class="release-os">Linux</span>
+            <span class="release-arch">x86_64</span>
+          </div>
+          <ul class="release-files">
+            <li>
+              <a class="file-link" href="https://dl.linxuhan.top/NCM-Studio/v4.0.1/ncm-studio-linux-x86_64.AppImage">
+                <span class="file-label">AppImage · 单文件</span>
+                <span class="file-name">ncm-studio-linux-x86_64.AppImage</span>
+                <span class="file-arrow" aria-hidden="true">↓</span>
+              </a>
+            </li>
+          </ul>
+          <p class="release-note">赋予执行位后直接运行，不需要 FUSE。要求 glibc ≥ 2.35（Ubuntu 22.04 / Debian 12 及以上）。</p>
+        </article>
+
+        <article class="release-card">
+          <div class="release-head">
+            <span class="release-os">macOS</span>
+            <span class="release-arch">Apple Silicon</span>
+          </div>
+          <ul class="release-files">
+            <li>
+              <a class="file-link" href="https://dl.linxuhan.top/NCM-Studio/v4.0.1/ncm-studio-macos-arm64">
+                <span class="file-label">单文件程序 · arm64</span>
+                <span class="file-name">ncm-studio-macos-arm64</span>
+                <span class="file-arrow" aria-hidden="true">↓</span>
+              </a>
+            </li>
+          </ul>
+          <p class="release-note">仅提供 Apple Silicon（arm64）构建。首次打开若被 Gatekeeper 拦下，右键选择「打开」。</p>
+        </article>
+      </div>
+
+      <p class="download-note">
+        下载由 Cloudflare 缓存加速。若暂时无法下载，可前往
+        <a href="https://github.com/iamlinxuhan/NCM-Studio/releases" target="_blank" rel="noopener">GitHub Releases</a>；
+        校验文件：<a href="https://dl.linxuhan.top/NCM-Studio/v4.0.1/SHA256SUMS">SHA256SUMS</a>。
+      </p>
+    </div>
+  </section>
+
+  <section class="project-section" id="readme" aria-labelledby="readme-title">
+    <div class="wrap">
+      <div class="p-head">
+        <span class="p-num">02</span>
+        <h2 id="readme-title">README</h2>
+        <span class="p-en">Readme</span>
+        <a class="github-link aside" href="https://github.com/iamlinxuhan/NCM-Studio" target="_blank" rel="noopener">
+          前往项目 GitHub 界面 <span class="arrow" aria-hidden="true">↗</span>
+        </a>
+      </div>
+
+      <article class="markdown-body" id="readme-body"
+               data-repo="iamlinxuhan/NCM-Studio"
+               data-branch="main"
+               data-readme="../readmes/NCM-Studio.md"
+               data-readme-remote="README.md"
+               data-asset-base="../readmes/assets/NCM-Studio/"
+               aria-busy="true">
+        <p class="md-loading">正在加载 README…</p>
+      </article>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <p class="footer-name">吝旭涵</p>
+        <p class="footer-handle">DARKMARK_HACKER</p>
+      </div>
+      <p class="colophon">手写 HTML / CSS / 一点 JavaScript<br>字体 <a href="https://github.com/lxgw/LxgwWenKai" target="_blank" rel="noopener">霞鹜文楷</a>（SIL OFL）· 无框架 · 无统计脚本</p>
+    </div>
+    <div class="copy">
+      <span>© <span id="year">2026</span> 吝旭涵</span>
+      <span>Keep it simple, stupid.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="../vendor/marked.min.js?v=20261109-1"></script>
+<script src="../project.js?v=20261109-1"></script>
+
+</body>
+</html>

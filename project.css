@@ -1,0 +1,709 @@
+/* ─────────────────────────────────────────────
+   项目子页面：在 styles.css 的纸墨体系上延展
+   页面骨架 → 下载卡片 → README（GitHub 风格排版）
+   ───────────────────────────────────────────── */
+
+.project-page {
+  --reading: 58rem;
+}
+
+.project-page .wrap {
+  max-width: min(1180px, 86vw);
+}
+
+/* ── 页首 ───────────────────────────────────── */
+.project-hero {
+  position: relative;
+  padding-top: calc(var(--header-h) + clamp(3rem, 9vw, 7rem));
+  padding-bottom: clamp(2.5rem, 6vw, 4.5rem);
+}
+
+.project-hero .wrap::after {
+  content: "";
+  display: block;
+  width: clamp(3rem, 6vw, 5rem);
+  height: 2px;
+  margin-top: clamp(2rem, 4vw, 3rem);
+  background: var(--accent);
+  opacity: 0.85;
+}
+
+.crumb {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  margin: 0 0 clamp(1.6rem, 4vw, 2.6rem);
+  font-family: var(--mono);
+  font-size: 0.64rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.crumb a {
+  color: var(--muted);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: color 0.25s ease, border-color 0.25s ease;
+}
+.crumb a:hover {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+.crumb .sep { color: var(--line); }
+
+.project-hero h1 {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: clamp(0.65rem, 1.6vw, 1.1rem);
+  margin: 0.55rem 0 0;
+  font-family: var(--display);
+  font-size: clamp(2.9rem, 1.7rem + 5vw, 5.6rem);
+  font-weight: 400;
+  line-height: 1.06;
+  letter-spacing: 0.01em;
+}
+
+.version {
+  flex: none;
+  padding: 0.3em 0.62em;
+  border: 1px solid color-mix(in srgb, var(--accent) 55%, transparent);
+  border-radius: 2px;
+  color: var(--accent);
+  font-family: var(--mono);
+  font-size: clamp(0.66rem, 0.6rem + 0.25vw, 0.8rem);
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  line-height: 1.2;
+}
+
+.project-lede {
+  max-width: 56ch;
+  margin: clamp(1.1rem, 2.5vw, 1.6rem) 0 0;
+  font-size: clamp(1.06rem, 1rem + 0.3vw, 1.2rem);
+  line-height: 1.9;
+}
+
+.project-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  margin: clamp(1.4rem, 3vw, 2rem) 0 0;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.62rem 1.1rem;
+  border: 1px solid var(--accent);
+  border-radius: 2px;
+  background: var(--accent);
+  color: var(--paper);
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  text-decoration: none;
+  transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+.btn:hover {
+  background: transparent;
+  color: var(--accent);
+}
+
+.btn-ghost {
+  background: transparent;
+  border-color: var(--line);
+  color: var(--muted);
+}
+.btn-ghost:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.project-hero .tags {
+  margin-top: clamp(1.4rem, 3vw, 1.8rem);
+}
+
+/* ── 通用小节 ───────────────────────────────── */
+.project-section {
+  position: relative;
+  padding-block: clamp(2rem, 4vw, 3rem) clamp(3.5rem, 8vw, 6rem);
+  border-top: 1px solid var(--line);
+}
+
+.p-head {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0.75rem 1rem;
+  margin-bottom: clamp(1.4rem, 3vw, 2.2rem);
+}
+
+.p-num {
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.16em;
+  color: var(--accent);
+}
+
+.p-head h2 {
+  margin: 0;
+  font-family: var(--display);
+  font-size: clamp(1.9rem, 1.25rem + 2vw, 2.8rem);
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: 0.02em;
+}
+
+.p-en {
+  font-family: var(--mono);
+  font-size: 0.64rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.p-head .aside {
+  margin-left: auto;
+}
+
+.github-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding-bottom: 0.15rem;
+  border-bottom: 1px solid var(--line);
+  color: var(--ink);
+  font-family: var(--mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.08em;
+  text-decoration: none;
+  transition: color 0.25s ease, border-color 0.25s ease;
+}
+.github-link:hover {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+
+/* ── 下载卡片 ───────────────────────────────── */
+.release-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 17rem), 1fr));
+  gap: 1px;
+  border: 1px solid var(--line);
+  background: var(--line);
+}
+
+.release-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: clamp(1.2rem, 2.4vw, 1.75rem);
+  background: var(--paper);
+  transition: background 0.35s ease;
+}
+.release-card:hover {
+  background: color-mix(in srgb, var(--paper-2) 55%, var(--paper));
+}
+.release-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 2.5rem;
+  height: 2px;
+  background: var(--accent);
+  opacity: 0.8;
+}
+
+.release-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.release-os {
+  font-family: var(--display);
+  font-size: 1.22rem;
+  letter-spacing: 0.02em;
+}
+
+.release-arch {
+  font-family: var(--mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.release-files {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.release-files li + li {
+  border-top: 1px solid color-mix(in srgb, var(--line) 65%, transparent);
+}
+
+.file-link {
+  position: relative;
+  display: block;
+  padding: 0.62rem 1.35rem 0.62rem 0;
+  color: var(--ink);
+  text-decoration: none;
+  transition: color 0.25s ease, padding-left 0.25s ease;
+}
+.file-link:hover {
+  color: var(--accent);
+  padding-left: 0.3rem;
+}
+
+.file-label {
+  display: block;
+  font-size: 0.98rem;
+  line-height: 1.5;
+}
+
+.file-name {
+  display: block;
+  margin-top: 0.1rem;
+  overflow-wrap: anywhere;
+  font-family: var(--mono);
+  font-size: 0.58rem;
+  letter-spacing: 0.02em;
+  line-height: 1.55;
+  color: var(--muted);
+}
+
+.file-arrow {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  font-family: var(--mono);
+  font-size: 0.9rem;
+  color: var(--muted);
+  transition: transform 0.25s ease, color 0.25s ease;
+}
+.file-link:hover .file-arrow {
+  transform: translateY(calc(-50% + 2px));
+  color: var(--accent);
+}
+
+/* 卡片之外的其他架构下载 */
+.release-alt {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0.3rem 0.45rem;
+  margin: 1rem 0 0;
+  padding: 0.65rem 0;
+  border-bottom: 1px solid var(--line);
+  font-size: 0.82rem;
+  line-height: 1.9;
+  color: var(--muted);
+}
+.release-alt-label {
+  margin-right: 0.35rem;
+  font-family: var(--mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.release-alt a {
+  color: var(--ink);
+  text-decoration: none;
+  border-bottom: 1px solid var(--line);
+}
+.release-alt a:hover {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+.release-alt .sep {
+  color: var(--line);
+}
+.release-alt-note {
+  flex-basis: 100%;
+  font-size: 0.78rem;
+  line-height: 1.8;
+  color: var(--muted);
+}
+.release-alt code,
+.release-note code {
+  padding: 0.04em 0.3em;
+  border: 1px solid var(--line);
+  border-radius: 3px;
+  background: var(--paper-2);
+  font-family: var(--mono);
+  font-size: 0.88em;
+}
+
+.release-note {
+  margin: 0;
+  font-size: 0.82rem;
+  line-height: 1.75;
+  color: var(--muted);
+}
+.release-note a {
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px solid color-mix(in srgb, var(--accent) 40%, transparent);
+}
+.release-note a:hover {
+  color: var(--accent-2);
+  border-bottom-color: var(--accent-2);
+}
+
+.release-card.is-empty {
+  background: color-mix(in srgb, var(--paper-2) 30%, var(--paper));
+}
+.release-card.is-empty::before {
+  background: var(--muted);
+  opacity: 0.35;
+}
+.release-card.is-empty .release-os {
+  color: var(--muted);
+}
+
+.download-note {
+  margin: 1.2rem 0 0;
+  font-family: var(--mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.04em;
+  line-height: 1.8;
+  color: var(--muted);
+}
+.download-note a {
+  color: var(--muted);
+  text-decoration: none;
+  border-bottom: 1px solid var(--line);
+}
+.download-note a:hover {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+
+/* ── README（GitHub 风格排版，配色沿用纸黄） ── */
+.markdown-body {
+  max-width: var(--reading);
+  font-size: clamp(1rem, 0.96rem + 0.14vw, 1.06rem);
+  line-height: 1.9;
+  overflow-wrap: break-word;
+}
+
+.markdown-body > :first-child { margin-top: 0; }
+.markdown-body > :last-child { margin-bottom: 0; }
+
+.markdown-body h1,
+.markdown-body h2,
+.markdown-body h3,
+.markdown-body h4,
+.markdown-body h5,
+.markdown-body h6 {
+  position: relative;
+  margin: 2.1em 0 0.75em;
+  font-family: var(--display);
+  font-weight: 400;
+  line-height: 1.35;
+  letter-spacing: 0.01em;
+  scroll-margin-top: calc(var(--header-h) + 1.5rem);
+}
+
+.markdown-body h1 {
+  padding-bottom: 0.32em;
+  border-bottom: 1px solid var(--line);
+  font-size: clamp(1.8rem, 1.5rem + 1vw, 2.25rem);
+}
+.markdown-body h2 {
+  padding-bottom: 0.3em;
+  border-bottom: 1px solid var(--line);
+  font-size: clamp(1.45rem, 1.25rem + 0.7vw, 1.75rem);
+}
+.markdown-body h3 { font-size: 1.28rem; }
+.markdown-body h4 { font-size: 1.1rem; }
+.markdown-body h5 { font-size: 1rem; }
+.markdown-body h6 {
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+.markdown-body .md-anchor {
+  margin-left: 0.45em;
+  font-family: var(--mono);
+  font-size: 0.62em;
+  color: var(--muted);
+  text-decoration: none;
+  opacity: 0;
+  transition: opacity 0.2s ease, color 0.2s ease;
+}
+.markdown-body h1:hover .md-anchor,
+.markdown-body h2:hover .md-anchor,
+.markdown-body h3:hover .md-anchor,
+.markdown-body h4:hover .md-anchor,
+.markdown-body h5:hover .md-anchor,
+.markdown-body h6:hover .md-anchor,
+.markdown-body .md-anchor:focus-visible {
+  opacity: 1;
+}
+.markdown-body .md-anchor:hover { color: var(--accent); }
+
+.markdown-body p {
+  margin: 0 0 1.15em;
+}
+
+.markdown-body a {
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px solid color-mix(in srgb, var(--accent) 38%, transparent);
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+.markdown-body a:hover {
+  color: var(--accent-2);
+  border-bottom-color: var(--accent-2);
+}
+
+.markdown-body strong { font-weight: 600; }
+.markdown-body em { font-style: italic; }
+.markdown-body del { color: var(--muted); }
+
+.markdown-body ul,
+.markdown-body ol {
+  margin: 0 0 1.2em;
+  padding-left: 1.5em;
+}
+.markdown-body li + li { margin-top: 0.32em; }
+.markdown-body li > ul,
+.markdown-body li > ol {
+  margin: 0.35em 0 0.45em;
+}
+.markdown-body li.task-list-item {
+  list-style: none;
+  margin-left: -1.35em;
+}
+.markdown-body li.task-list-item input {
+  margin-right: 0.5em;
+  accent-color: var(--accent);
+}
+
+.markdown-body blockquote {
+  margin: 1.5em 0;
+  padding: 0.85em 1.15em;
+  border-left: 3px solid var(--accent);
+  background: color-mix(in srgb, var(--paper-2) 62%, transparent);
+  color: var(--muted);
+}
+.markdown-body blockquote > :first-child { margin-top: 0; }
+.markdown-body blockquote > :last-child { margin-bottom: 0; }
+
+.markdown-body hr {
+  height: 0;
+  margin: 2.6em 0;
+  border: 0;
+  border-top: 1px solid var(--line);
+}
+
+.markdown-body img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 1.1em 0;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  background: var(--paper-2);
+}
+
+.markdown-body img.md-badge {
+  display: inline-block;
+  margin: 0 0.18rem 0.35rem 0;
+  border: 0;
+  border-radius: 0;
+  background: none;
+  vertical-align: middle;
+}
+
+.markdown-body p[align="center"],
+.markdown-body div[align="center"] {
+  text-align: center;
+}
+.markdown-body p[align="center"] img {
+  display: inline-block;
+  margin: 0.35rem 0.15rem;
+}
+.markdown-body p[align="center"] a { border-bottom: 0; }
+
+/* README 里常见的「两张 49.4% 截图并排」：去掉行内空白，令它们真正同一行 */
+.markdown-body .md-img-row {
+  font-size: 0;
+  line-height: 0;
+}
+.markdown-body .md-img-row img {
+  margin: 0.35rem 0.1rem;
+}
+
+.markdown-body code {
+  padding: 0.08em 0.36em;
+  border: 1px solid var(--line);
+  border-radius: 3px;
+  background: var(--paper-2);
+  font-family: var(--mono);
+  font-size: 0.82em;
+}
+
+.markdown-body pre {
+  position: relative;
+  margin: 1.5em 0;
+  padding: 1.1rem 1.2rem;
+  overflow-x: auto;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  background: var(--paper-2);
+  line-height: 1.68;
+  -webkit-overflow-scrolling: touch;
+}
+.markdown-body pre code {
+  padding: 0;
+  border: 0;
+  background: none;
+  font-size: 0.8rem;
+  white-space: pre;
+}
+
+.md-copy {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  padding: 0.28rem 0.55rem;
+  border: 1px solid var(--line);
+  border-radius: 2px;
+  background: var(--paper);
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: 0.56rem;
+  letter-spacing: 0.08em;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+.markdown-body pre:hover .md-copy,
+.md-copy:focus-visible { opacity: 1; }
+.md-copy:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+.md-table {
+  margin: 1.5em 0;
+  overflow-x: auto;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  -webkit-overflow-scrolling: touch;
+}
+
+.markdown-body table {
+  width: 100%;
+  margin: 0;
+  border-collapse: collapse;
+  font-size: 0.88em;
+  line-height: 1.7;
+}
+.markdown-body th,
+.markdown-body td {
+  padding: 0.55em 0.8em;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+.markdown-body th {
+  background: color-mix(in srgb, var(--paper-2) 80%, transparent);
+  font-weight: 600;
+  white-space: nowrap;
+}
+.markdown-body tr:last-child td { border-bottom: 0; }
+.markdown-body tbody tr:hover {
+  background: color-mix(in srgb, var(--paper-2) 38%, transparent);
+}
+
+.markdown-body kbd {
+  padding: 0.1em 0.4em;
+  border: 1px solid var(--line);
+  border-bottom-width: 2px;
+  border-radius: 3px;
+  background: var(--paper-2);
+  font-family: var(--mono);
+  font-size: 0.78em;
+}
+
+.markdown-body details {
+  margin: 1.2em 0;
+  padding: 0.8em 1em;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  background: color-mix(in srgb, var(--paper-2) 35%, transparent);
+}
+.markdown-body summary {
+  cursor: pointer;
+  font-weight: 600;
+}
+.markdown-body details[open] summary {
+  margin-bottom: 0.8em;
+  padding-bottom: 0.6em;
+  border-bottom: 1px solid var(--line);
+}
+
+.markdown-body sub,
+.markdown-body sup { line-height: 0; }
+
+.md-loading,
+.md-error {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+}
+.md-error a {
+  color: var(--accent);
+}
+
+/* ── 响应式 ─────────────────────────────────── */
+@media (max-width: 760px) {
+  .project-hero {
+    padding-top: calc(var(--header-h) + 2.4rem);
+  }
+  .project-hero h1 {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+  .project-lede { font-size: 1.02rem; }
+  .p-head .aside,
+  .p-head .github-link {
+    margin-left: 0;
+    flex-basis: 100%;
+  }
+  .markdown-body { font-size: 1rem; }
+  .markdown-body pre { padding: 0.95rem 1rem; }
+  .md-copy { opacity: 0.85; }
+  .markdown-body th { white-space: normal; }
+}
+
+@media (max-width: 480px) {
+  .release-grid { grid-template-columns: 1fr; }
+  .file-label { font-size: 0.94rem; }
+}
+
+@media (hover: none) {
+  .md-copy { opacity: 0.85; }
+}
+
+@media print {
+  .md-copy { display: none; }
+  .markdown-body pre { white-space: pre-wrap; }
+}

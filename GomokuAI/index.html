@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GomokuAI — 吝旭涵</title>
+<meta name="description" content="GomokuAI：一个不断打磨的五子棋 AI。位棋盘、增量评估、Negamax/PVS、置换表、静止搜索与 VCF，C++17 搜索核心，纯 CPU 运行。">
+<meta name="theme-color" content="#f4f0e7">
+<meta property="og:type" content="website">
+<meta property="og:title" content="GomokuAI — 吝旭涵">
+<meta property="og:description" content="一个不断打磨的五子棋 AI。位棋盘、增量评估、Negamax/PVS、置换表、静止搜索与 VCF，C++17 搜索核心。">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='9' fill='%23a8342a'/%3E%3Ctext x='32' y='45' font-size='38' font-family='serif' text-anchor='middle' fill='%23f4f0e7'%3E%E5%90%9D%3C/text%3E%3C/svg%3E">
+
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="dns-prefetch" href="https://fastly.jsdelivr.net">
+<link rel="stylesheet" id="wenkai-font"
+      href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-webfont@1.7.0/style.css"
+      onerror="this.onerror=null;this.href='https://fastly.jsdelivr.net/npm/lxgw-wenkai-webfont@1.7.0/style.css'">
+<link rel="stylesheet" href="../styles.css?v=20261108-5">
+<link rel="stylesheet" href="../project.css?v=20261109-1">
+<script src="../script.js?v=20261108-5"></script>
+</head>
+
+<body class="project-page">
+<a class="skip" href="#main">跳到正文</a>
+<div class="progress" id="progress" aria-hidden="true"></div>
+
+<header class="top" id="topbar">
+  <a class="brand" href="../">吝旭涵<span class="brand-latin">/ LIN XUHAN</span></a>
+  <nav class="topnav" aria-label="主导航">
+    <a href="../">首页</a>
+    <a href="../#work">作品</a>
+    <a href="../NCM-Studio/">NCM-Studio</a>
+    <a href="#downloads">下载</a>
+  </nav>
+  <button class="theme" id="theme" type="button" aria-label="切换到暗色主题">
+    <span class="theme-dot" aria-hidden="true"></span>
+    <span class="theme-text">暗色</span>
+  </button>
+</header>
+
+<main id="main">
+
+  <header class="project-hero">
+    <div class="wrap">
+      <p class="crumb">
+        <a href="../">首页</a><span class="sep" aria-hidden="true">/</span>
+        <a href="../#work">作品</a><span class="sep" aria-hidden="true">/</span>
+        <span>GomokuAI</span>
+      </p>
+      <p class="kicker">博弈 AI · Python / PyQt5 / C++17</p>
+      <h1>GomokuAI <span class="version">v4.3.1</span></h1>
+      <p class="project-lede">
+        一个不断打磨的五子棋 AI。位棋盘、全增量评估、Negamax/PVS、置换表、静止搜索与 VCF 连续冲四，
+        一层层把搜索压进时间里；C++17 搜索核心纯 CPU 运行，支持挑战 AI、本地对战与局域网联机。
+        现已以 AlphaGomoku 之名上架 Microsoft Store。
+      </p>
+      <ul class="tags">
+        <li>Python</li>
+        <li>PyQt5</li>
+        <li>C++17</li>
+        <li>CPU only</li>
+      </ul>
+      <p class="project-actions">
+        <a class="btn" href="#downloads">下载 <span class="arrow" aria-hidden="true">↓</span></a>
+        <a class="btn btn-ghost" href="https://github.com/iamlinxuhan/GomokuAI" target="_blank" rel="noopener">GitHub 仓库 <span class="arrow" aria-hidden="true">↗</span></a>
+        <a class="btn btn-ghost" href="https://apps.microsoft.com/detail/9p2r3gd8dnjn?hl=zh-CN&amp;gl=HK" target="_blank" rel="noopener">
+          <span class="store-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+          Microsoft Store <span class="arrow" aria-hidden="true">↗</span>
+        </a>
+      </p>
+    </div>
+  </header>
+
+  <section class="project-section" id="downloads" aria-labelledby="downloads-title">
+    <div class="wrap">
+      <div class="p-head">
+        <span class="p-num">01</span>
+        <h2 id="downloads-title">下载</h2>
+        <span class="p-en">Releases</span>
+        <span class="p-en aside">最新版本 · v4.3.1</span>
+      </div>
+
+      <div class="release-grid">
+        <article class="release-card">
+          <div class="release-head">
+            <span class="release-os">Windows</span>
+            <span class="release-arch">x86_64</span>
+          </div>
+          <ul class="release-files">
+            <li>
+              <a class="file-link" href="https://dl.linxuhan.top/GomokuAI/v4.3.1/GomokuAI_Windows_amd_x86_64_setup.exe">
+                <span class="file-label">安装包 · 推荐</span>
+                <span class="file-name">GomokuAI_Windows_amd_x86_64_setup.exe</span>
+                <span class="file-arrow" aria-hidden="true">↓</span>
+              </a>
+            </li>
+            <li>
+              <a class="file-link" href="https://dl.linxuhan.top/GomokuAI/v4.3.1/GomokuAI_Windows_amd_x86_64_run_play.exe">
+                <span class="file-label">免安装 · 单文件</span>
+                <span class="file-name">GomokuAI_Windows_amd_x86_64_run_play.exe</span>
+                <span class="file-arrow" aria-hidden="true">↓</span>
+              </a>
+            </li>
+            <li>
+              <a class="file-link" href="https://dl.linxuhan.top/GomokuAI/v4.3.1/GomokuAI_Windows_amd_x86_64_run_debug.exe">
+                <span class="file-label">免安装 · 带日志</span>
+                <span class="file-name">GomokuAI_Windows_amd_x86_64_run_debug.exe</span>
+                <span class="file-arrow" aria-hidden="true">↓</span>
+              </a>
+            </li>
+          </ul>
+          <p class="release-note">安装包会装到 Program Files 并创建菜单入口；Windows on ARM 请下载 x64 版，系统自带模拟。</p>
+        </article>
+
+        <article class="release-card">
+          <div class="release-head">
+            <span class="release-os">Linux</span>
+            <span class="release-arch">x86_64</span>
+          </div>
+          <ul class="release-files">
+            <li>
+              <a class="file-link" href="https://dl.linxuhan.top/GomokuAI/v4.3.1/GomokuAI_Linux_amd_x86_64_setup.deb">
+                <span class="file-label">安装包 · deb</span>
+                <span class="file-name">GomokuAI_Linux_amd_x86_64_setup.deb</span>
+                <span class="file-arrow" aria-hidden="true">↓</span>
+              </a>
+            </li>
+            <li>
+              <a class="file-link" href="https://dl.linxuhan.top/GomokuAI/v4.3.1/GomokuAI_Linux_amd_x86_64_run_play">
+                <span class="file-label">免安装 · 单文件</span>
+                <span class="file-name">GomokuAI_Linux_amd_x86_64_run_play</span>
+                <span class="file-arrow" aria-hidden="true">↓</span>
+              </a>
+            </li>
+            <li>
+              <a class="file-link" href="https://dl.linxuhan.top/GomokuAI/v4.3.1/GomokuAI_Linux_amd_x86_64_run_debug">
+                <span class="file-label">免安装 · 带日志</span>
+                <span class="file-name">GomokuAI_Linux_amd_x86_64_run_debug</span>
+                <span class="file-arrow" aria-hidden="true">↓</span>
+              </a>
+            </li>
+          </ul>
+          <p class="release-note">deb 安装后从菜单启动；裸文件需要先 <code>chmod +x</code>。普通使用选 play，排查问题选 debug。</p>
+        </article>
+
+        <article class="release-card is-empty">
+          <div class="release-head">
+            <span class="release-os">macOS</span>
+            <span class="release-arch">暂未提供</span>
+          </div>
+          <p class="release-note">
+            本仓库的 C++ 搜索核心只在 Windows / Linux 上构建，从未在 macOS 上开发或验证。
+            macOS 用户请前往 <a href="https://github.com/iamlinxuhan/GomokuAI-Py" target="_blank" rel="noopener">GomokuAI-Py</a>，
+            那里提供 Apple Silicon 与 Intel 的 <code>.dmg</code> / <code>.pkg</code>。
+          </p>
+        </article>
+      </div>
+
+      <p class="release-alt">
+        <span class="release-alt-label">其他架构</span>
+        <a href="https://dl.linxuhan.top/GomokuAI/v4.3.1/GomokuAI_Linux_aarch64_setup.tar.gz">aarch64</a>
+        <span class="sep" aria-hidden="true">·</span>
+        <a href="https://dl.linxuhan.top/GomokuAI/v4.3.1/GomokuAI_Linux_armv7_setup.tar.gz">armv7</a>
+        <span class="sep" aria-hidden="true">·</span>
+        <a href="https://dl.linxuhan.top/GomokuAI/v4.3.1/GomokuAI_Linux_amd_x32_setup.deb">amd_x32</a>
+        <span class="release-alt-note">用 <code>uname -m</code> 对照：aarch64 → ARM64，armv7l → armv7，i686 → amd_x32；tar.gz 解包后运行 <code>sudo ./install.sh</code>。</span>
+      </p>
+
+      <p class="download-note">
+        下载由 Cloudflare 缓存加速。若暂时无法下载，可前往
+        <a href="https://github.com/iamlinxuhan/GomokuAI/releases" target="_blank" rel="noopener">GitHub Releases</a>。
+      </p>
+    </div>
+  </section>
+
+  <section class="project-section" id="readme" aria-labelledby="readme-title">
+    <div class="wrap">
+      <div class="p-head">
+        <span class="p-num">02</span>
+        <h2 id="readme-title">README</h2>
+        <span class="p-en">Readme</span>
+        <a class="github-link aside" href="https://github.com/iamlinxuhan/GomokuAI" target="_blank" rel="noopener">
+          前往项目 GitHub 界面 <span class="arrow" aria-hidden="true">↗</span>
+        </a>
+      </div>
+
+      <article class="markdown-body" id="readme-body"
+               data-repo="iamlinxuhan/GomokuAI"
+               data-branch="main"
+               data-readme="../readmes/GomokuAI.md"
+               data-readme-remote="README.zh-CN.md"
+               data-asset-base="../readmes/assets/GomokuAI/"
+               aria-busy="true">
+        <p class="md-loading">正在加载 README…</p>
+      </article>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <p class="footer-name">吝旭涵</p>
+        <p class="footer-handle">DARKMARK_HACKER</p>
+      </div>
+      <p class="colophon">手写 HTML / CSS / 一点 JavaScript<br>字体 <a href="https://github.com/lxgw/LxgwWenKai" target="_blank" rel="noopener">霞鹜文楷</a>（SIL OFL）· 无框架 · 无统计脚本</p>
+    </div>
+    <div class="copy">
+      <span>© <span id="year">2026</span> 吝旭涵</span>
+      <span>Keep it simple, stupid.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="../vendor/marked.min.js?v=20261109-1"></script>
+<script src="../project.js?v=20261109-1"></script>
+
+</body>
+</html>

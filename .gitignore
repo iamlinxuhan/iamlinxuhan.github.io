@@ -1,11 +1,15 @@
 # 本地参考资料与项目源码，不发布到 GitHub Pages
-yfy0109.github.io/
-GomokuAI/
-NCM-Studio/
-其他相关信息.txt
+/yfy0109.github.io/
+/其他相关信息.txt
+
+# 项目源码目录只发布子页面本身，其余文件留在本地
+/GomokuAI/*
+!/GomokuAI/index.html
+/NCM-Studio/*
+!/NCM-Studio/index.html
 
 # 编辑器与本地配置
-.vscode/
+/.vscode/
 
 # 系统杂项
 .DS_Store
