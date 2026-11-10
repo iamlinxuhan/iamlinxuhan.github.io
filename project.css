@@ -14,9 +14,11 @@
 /* ── 页首 ───────────────────────────────────── */
 .project-hero {
   position: relative;
-  /* 页首装饰的边长与右侧距离；正文留白也按这两个值算，改一处即可 */
-  --art-size: clamp(14rem, 27vw, 34rem);
-  --art-right: clamp(1.5rem, 8vw, 10rem);
+  /* 页首装饰：贴着视口右侧，尺寸随视口缩放。
+     22vw 在 1250px 以上都落在正文（lede 上限 56ch）右侧，不会压字；
+     上限 32rem 防止超宽屏上失控。 */
+  --art-size: clamp(15rem, 22vw, 32rem);
+  --art-right: clamp(1rem, 3vw, 3rem);
   padding-top: calc(var(--header-h) + clamp(3rem, 9vw, 7rem));
   padding-bottom: clamp(2.5rem, 6vw, 4.5rem);
 }
@@ -31,7 +33,7 @@
   opacity: 0.85;
 }
 
-/* 页首装饰：贴着视口右侧的留白，尺寸用 rem + vw，随字号与视口一起缩放。 */
+/* 页首装饰：贴着视口右侧的留白，宽度随视口缩放。 */
 .hero-art {
   position: absolute;
   top: calc(50% + 2rem);
@@ -194,13 +196,8 @@
   opacity: 0.8;
 }
 
-/* 唱片比棋盘宽，往左挪一点，视觉重量才和棋盘的右边缘对齐 */
-.page-ncm .project-hero {
-  --art-right: clamp(1.5rem, 13vw, 16rem);
-}
-
-/* 窄屏时让位给正文 */
-@media (max-width: 1000px) {
+/* 窄屏时右侧没有空位，装饰直接让位给正文 */
+@media (max-width: 1250px) {
   .hero-art {
     display: none;
   }
