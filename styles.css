@@ -1184,7 +1184,6 @@ a:hover > .arrow,
 @media (max-width: 760px) {
   .topnav { display: none; }
   .theme { margin-left: auto; }
-  .hero-contours,
   .hero-mark { display: none; }
 
   .sec-grid { grid-template-columns: 1fr; gap: 1.6rem; }

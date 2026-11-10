@@ -14,11 +14,20 @@
 /* ── 页首 ───────────────────────────────────── */
 .project-hero {
   position: relative;
-  /* 页首装饰：贴着视口右侧，尺寸随视口缩放。
-     22vw 在 1250px 以上都落在正文（lede 上限 56ch）右侧，不会压字；
-     上限 32rem 防止超宽屏上失控。 */
-  --art-size: clamp(15rem, 22vw, 32rem);
+  /* 页首装饰：放在「正文右边界」与「视口右侧留白」之间的空档里，水平居中。
+     正文右边界按 lede 的公式估算：左边距 + 内边距 + 56ch。
+     中文 1ch ≈ 0.64em，56ch 取 36em；改 .project-page .wrap 或 .project-lede
+     的宽度时，这里的 1180px / 86vw / 36em 要同步。 */
+  --lede-font: clamp(1.06rem, 1rem + 0.3vw, 1.2rem);
+  --text-edge: calc(
+    clamp(1.5rem, 8vw, 8rem) + var(--pad) +
+    min(calc(36 * var(--lede-font)), calc(min(1180px, 86vw) - 2 * var(--pad)))
+  );
   --art-right: clamp(1rem, 3vw, 3rem);
+  --art-gap: clamp(0.75rem, 1.5vw, 2rem);
+  --art-zone: max(0px, calc(100vw - var(--text-edge) - var(--art-right) - var(--art-gap)));
+  --art-size: min(22vw, 32rem, var(--art-zone));
+  --art-left: calc(var(--text-edge) + var(--art-gap) + (var(--art-zone) - var(--art-size)) / 2);
   padding-top: calc(var(--header-h) + clamp(3rem, 9vw, 7rem));
   padding-bottom: clamp(2.5rem, 6vw, 4.5rem);
 }
@@ -33,11 +42,11 @@
   opacity: 0.85;
 }
 
-/* 页首装饰：贴着视口右侧的留白，宽度随视口缩放。 */
+/* 页首装饰：在正文右侧的空档里居中，尺寸随空档宽度一起收缩，不设隐藏断点。 */
 .hero-art {
   position: absolute;
   top: calc(50% + 2rem);
-  right: var(--art-right);
+  left: var(--art-left);
   z-index: 0;
   width: var(--art-size);
   transform: translateY(-50%);
@@ -194,13 +203,6 @@
 .hero-art--record .pivot-dot {
   fill: var(--accent);
   opacity: 0.8;
-}
-
-/* 窄屏时右侧没有空位，装饰直接让位给正文 */
-@media (max-width: 1250px) {
-  .hero-art {
-    display: none;
-  }
 }
 
 .crumb {
