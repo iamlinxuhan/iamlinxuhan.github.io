@@ -884,18 +884,6 @@
   .markdown-body th { white-space: normal; }
 }
 
-/* 中等宽度时正文仍占满整行，右侧空档太窄，装饰同样放到页首右上角；
-   超过 1000px 后空档足够宽，再回到正文右侧居中。 */
-@media (min-width: 761px) and (max-width: 1000px) {
-  .hero-art {
-    top: calc(var(--header-h) + clamp(3rem, 9vw, 7rem));
-    right: var(--art-right);
-    left: auto;
-    width: clamp(5.5rem, 10vw, 7rem);
-    transform: none;
-  }
-}
-
 @media (hover: none) {
   .md-copy { opacity: 0.85; }
 }
