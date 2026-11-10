@@ -858,6 +858,15 @@
   .project-hero {
     padding-top: calc(var(--header-h) + 2.4rem);
   }
+  /* 手机上正文占满整行，右侧已没有空档，装饰改放页首右上角的空白处：
+     与栏目小字同一行，横向不与任何文字相交。 */
+  .hero-art {
+    top: calc(var(--header-h) + 2.4rem);
+    right: var(--art-right);
+    left: auto;
+    width: clamp(4.5rem, 20vw, 6rem);
+    transform: none;
+  }
   .project-hero h1 {
     align-items: flex-start;
     flex-direction: column;
@@ -873,6 +882,18 @@
   .markdown-body pre { padding: 0.95rem 1rem; }
   .md-copy { opacity: 0.85; }
   .markdown-body th { white-space: normal; }
+}
+
+/* 中等宽度时正文仍占满整行，右侧空档太窄，装饰同样放到页首右上角；
+   超过 1000px 后空档足够宽，再回到正文右侧居中。 */
+@media (min-width: 761px) and (max-width: 1000px) {
+  .hero-art {
+    top: calc(var(--header-h) + clamp(3rem, 9vw, 7rem));
+    right: var(--art-right);
+    left: auto;
+    width: clamp(5.5rem, 10vw, 7rem);
+    transform: none;
+  }
 }
 
 @media (hover: none) {
