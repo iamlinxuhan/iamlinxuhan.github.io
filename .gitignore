@@ -8,6 +8,7 @@
 !/GomokuAI/index.html
 /NCM-Studio/*
 !/NCM-Studio/index.html
+!/NCM-Studio/version.json
 
 # 编辑器与本地配置
 /.vscode/
