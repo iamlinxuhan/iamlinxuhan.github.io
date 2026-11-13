@@ -49,7 +49,7 @@
         <span>GomokuAI</span>
       </p>
       <p class="kicker">博弈 AI · Python / PyQt5 / C++17</p>
-      <h1>GomokuAI <span class="version">v4.3.1</span></h1>
+      <h1>GomokuAI <span class="version">v4.4.0</span></h1>
       <p class="project-lede">
         一个不断打磨的五子棋 AI。位棋盘、全增量评估、Negamax/PVS、置换表、静止搜索与 VCF 连续冲四，
         一层层把搜索压进时间里；C++17 搜索核心纯 CPU 运行，支持挑战 AI、本地对战与局域网联机。
@@ -97,7 +97,7 @@
         <span class="p-num">01</span>
         <h2 id="downloads-title">下载</h2>
         <span class="p-en">Releases</span>
-        <span class="p-en aside">最新版本 · v4.3.1</span>
+        <span class="p-en aside">最新版本 · v4.4.0</span>
       </div>
 
       <div class="release-grid">
@@ -108,28 +108,21 @@
           </div>
           <ul class="release-files">
             <li>
-              <a class="file-link" href="https://dl.linxuhan.top/GomokuAI/v4.3.1/GomokuAI_Windows_amd_x86_64_setup.exe">
+              <a class="file-link" href="https://dl.linxuhan.top/GomokuAI/v4.4.0/GomokuAI_Windows_amd_x86_64_setup.exe">
                 <span class="file-label">安装包 · 推荐</span>
                 <span class="file-name">GomokuAI_Windows_amd_x86_64_setup.exe</span>
                 <span class="file-arrow" aria-hidden="true">↓</span>
               </a>
             </li>
             <li>
-              <a class="file-link" href="https://dl.linxuhan.top/GomokuAI/v4.3.1/GomokuAI_Windows_amd_x86_64_run_play.exe">
+              <a class="file-link" href="https://dl.linxuhan.top/GomokuAI/v4.4.0/GomokuAI_Windows_amd_x86_64_run_play.exe">
                 <span class="file-label">免安装 · 单文件</span>
                 <span class="file-name">GomokuAI_Windows_amd_x86_64_run_play.exe</span>
                 <span class="file-arrow" aria-hidden="true">↓</span>
               </a>
             </li>
-            <li>
-              <a class="file-link" href="https://dl.linxuhan.top/GomokuAI/v4.3.1/GomokuAI_Windows_amd_x86_64_run_debug.exe">
-                <span class="file-label">免安装 · 带日志</span>
-                <span class="file-name">GomokuAI_Windows_amd_x86_64_run_debug.exe</span>
-                <span class="file-arrow" aria-hidden="true">↓</span>
-              </a>
-            </li>
           </ul>
-          <p class="release-note">安装包会装到 Program Files 并创建菜单入口；Windows on ARM 请下载 x64 版，系统自带模拟。</p>
+          <p class="release-note">安装包会装到 Program Files 并创建菜单入口，装好之后能自动更新；Windows on ARM 请下载 x64 版，系统自带模拟。需要日志时给任意一版加 <code>--debug</code> 启动即可。</p>
         </article>
 
         <article class="release-card">
@@ -139,28 +132,21 @@
           </div>
           <ul class="release-files">
             <li>
-              <a class="file-link" href="https://dl.linxuhan.top/GomokuAI/v4.3.1/GomokuAI_Linux_amd_x86_64_setup.deb">
+              <a class="file-link" href="https://dl.linxuhan.top/GomokuAI/v4.4.0/GomokuAI_Linux_amd_x86_64.AppImage">
+                <span class="file-label">AppImage · 推荐</span>
+                <span class="file-name">GomokuAI_Linux_amd_x86_64.AppImage</span>
+                <span class="file-arrow" aria-hidden="true">↓</span>
+              </a>
+            </li>
+            <li>
+              <a class="file-link" href="https://dl.linxuhan.top/GomokuAI/v4.4.0/GomokuAI_Linux_amd_x86_64_setup.deb">
                 <span class="file-label">安装包 · deb</span>
                 <span class="file-name">GomokuAI_Linux_amd_x86_64_setup.deb</span>
                 <span class="file-arrow" aria-hidden="true">↓</span>
               </a>
             </li>
-            <li>
-              <a class="file-link" href="https://dl.linxuhan.top/GomokuAI/v4.3.1/GomokuAI_Linux_amd_x86_64_run_play">
-                <span class="file-label">免安装 · 单文件</span>
-                <span class="file-name">GomokuAI_Linux_amd_x86_64_run_play</span>
-                <span class="file-arrow" aria-hidden="true">↓</span>
-              </a>
-            </li>
-            <li>
-              <a class="file-link" href="https://dl.linxuhan.top/GomokuAI/v4.3.1/GomokuAI_Linux_amd_x86_64_run_debug">
-                <span class="file-label">免安装 · 带日志</span>
-                <span class="file-name">GomokuAI_Linux_amd_x86_64_run_debug</span>
-                <span class="file-arrow" aria-hidden="true">↓</span>
-              </a>
-            </li>
           </ul>
-          <p class="release-note">deb 安装后从菜单启动；裸文件需要先 <code>chmod +x</code>。普通使用选 play，排查问题选 debug。</p>
+          <p class="release-note">AppImage 先 <code>chmod +x</code> 再运行，免安装且能自动更新；deb 装好后从菜单启动，升级交给系统的包管理器。需要日志时加 <code>--debug</code> 启动。</p>
         </article>
 
         <article class="release-card is-empty">
@@ -178,11 +164,13 @@
 
       <p class="release-alt">
         <span class="release-alt-label">其他架构</span>
-        <a href="https://dl.linxuhan.top/GomokuAI/v4.3.1/GomokuAI_Linux_aarch64_setup.tar.gz">aarch64</a>
+        <a href="https://dl.linxuhan.top/GomokuAI/v4.4.0/GomokuAI_Linux_aarch64.AppImage">aarch64</a>
         <span class="sep" aria-hidden="true">·</span>
-        <a href="https://dl.linxuhan.top/GomokuAI/v4.3.1/GomokuAI_Linux_armv7_setup.tar.gz">armv7</a>
+        <a href="https://dl.linxuhan.top/GomokuAI/v4.4.0/GomokuAI_Linux_aarch64_setup.tar.gz">aarch64 · tar.gz</a>
         <span class="sep" aria-hidden="true">·</span>
-        <a href="https://dl.linxuhan.top/GomokuAI/v4.3.1/GomokuAI_Linux_amd_x32_setup.deb">amd_x32</a>
+        <a href="https://dl.linxuhan.top/GomokuAI/v4.4.0/GomokuAI_Linux_armv7_setup.tar.gz">armv7</a>
+        <span class="sep" aria-hidden="true">·</span>
+        <a href="https://dl.linxuhan.top/GomokuAI/v4.4.0/GomokuAI_Linux_amd_x32_setup.deb">amd_x32</a>
         <span class="release-alt-note">用 <code>uname -m</code> 对照：aarch64 → ARM64，armv7l → armv7，i686 → amd_x32；tar.gz 解包后运行 <code>sudo ./install.sh</code>。</span>
       </p>
 
