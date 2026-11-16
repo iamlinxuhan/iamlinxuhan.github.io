@@ -974,6 +974,16 @@ a:hover > .arrow,
   font-size: 0.98rem;
 }
 .mottos p { margin: 0; }
+.mottos cite {
+  display: block;
+  margin-top: 0.15rem;
+  font-family: var(--mono);
+  font-size: 0.62rem;
+  font-style: normal;
+  letter-spacing: 0.14em;
+  line-height: 1.6;
+  color: var(--muted);
+}
 .mottos .mono {
   font-family: var(--mono);
   font-size: 0.66rem;

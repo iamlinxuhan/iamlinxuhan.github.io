@@ -158,11 +158,9 @@ document.addEventListener('DOMContentLoaded', function () {
         if (quoteText) quoteText.textContent = '“' + mottoGroup.text + '”';
         if (quoteSource) quoteSource.textContent = '—— ' + mottoGroup.source;
         if (mottoList) {
-          mottoList.textContent = '';
-          mottoGroup.aux.forEach(function (text) {
-            var item = document.createElement('p');
-            item.textContent = text;
-            mottoList.appendChild(item);
+          var mottoItems = mottoList.querySelectorAll('p');
+          mottoGroup.aux.forEach(function (text, index) {
+            if (mottoItems[index]) mottoItems[index].textContent = text;
           });
         }
       }
