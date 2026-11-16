@@ -144,6 +144,30 @@ document.addEventListener('DOMContentLoaded', function () {
       window.requestAnimationFrame(orbitFrame);
     }
 
+    /* 格言群：从 17 组里随机取一组，替换页面里的默认格言。 */
+    var mottoData = document.getElementById('motto-data');
+    var quoteBlock = document.querySelector('#quote .quote');
+    if (mottoData && quoteBlock) {
+      var mottoGroups = [];
+      try { mottoGroups = JSON.parse(mottoData.textContent); } catch (e) {}
+      if (mottoGroups.length) {
+        var mottoGroup = mottoGroups[Math.floor(Math.random() * mottoGroups.length)];
+        var quoteText = quoteBlock.querySelector('p');
+        var quoteSource = quoteBlock.querySelector('cite');
+        var mottoList = document.querySelector('#quote .mottos');
+        if (quoteText) quoteText.textContent = '“' + mottoGroup.text + '”';
+        if (quoteSource) quoteSource.textContent = '—— ' + mottoGroup.source;
+        if (mottoList) {
+          mottoList.textContent = '';
+          mottoGroup.aux.forEach(function (text) {
+            var item = document.createElement('p');
+            item.textContent = text;
+            mottoList.appendChild(item);
+          });
+        }
+      }
+    }
+
     /* 年份 */
     var year = document.getElementById('year');
     if (year) year.textContent = new Date().getFullYear();
