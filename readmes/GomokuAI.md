@@ -5,7 +5,7 @@
 
 ![五子棋 AI](assets/cover.png)
 
-基于 **PyQt5** 的五子棋人机对弈程序，搜索核心用 **C++17** 编写、通过本地
+基于 **Qt 6（PySide6）** 的五子棋人机对弈程序，搜索核心用 **C++17** 编写、通过本地
 TCP 暴露给界面。引擎为位棋盘 + 全增量评估 + PVS + 置换表 + 静止搜索 + VCF，
 并内置 **Gomocup 2026 官方开局库**。纯 CPU 运行。
 
@@ -15,7 +15,7 @@ TCP 暴露给界面。引擎为位棋盘 + 全增量评估 + PVS + 置换表 + �
 Windows 与 Linux 提供正式安装包，**自动更新**以 Ed25519 签名作为信任根。
 
 ![Python](assets/badges/python.svg)
-![PyQt5](assets/badges/pyqt5.svg)
+![PySide6](assets/badges/pyside6.svg)
 ![NumPy](assets/badges/numpy.svg)
 ![Version](assets/badges/version.svg)
 ![License](assets/badges/license.svg)
@@ -120,7 +120,7 @@ chmod +x GomokuAI_Linux_amd_x86_64.AppImage
 ```
 
 **Windows on ARM 请用 x64 包。** 系统自带 x64 仿真，运行正常。没有原生 Windows
-ARM 包：PyQt5 整条产品线都没有 `win_arm64` wheel，编不出来。
+ARM 包。
 
 ### 自动更新
 
@@ -148,12 +148,12 @@ GOMOKU_AI_LOGDIR=/tmp/gomoku ./GomokuAI_Linux_amd_x86_64.AppImage
 ```bash
 git clone https://github.com/iamlinxuhan/GomokuAI.git
 cd GomokuAI
-uv sync                              # Python >= 3.11；运行期依赖只有 numpy + PyQt5
+uv sync                              # Python >= 3.11；运行期依赖只有 numpy + PySide6
 uv run python main.py
 ```
 
 依赖用 **uv** 管理（`pyproject.toml` + 提交在仓库里的 `uv.lock`）。不用 uv 时，
-`pip install numpy PyQt5` 对源码运行完全等价。
+`pip install numpy PySide6-Essentials` 对源码运行完全等价（32 位平台换 `PyQt5`）。
 
 ---
 
@@ -276,7 +276,7 @@ uv run python main.py
 ## 两个引擎，一层门面
 
 ```
-┌─ Python（界面，PyQt5）──────────┐        ┌─ C++17 ───────────────────┐
+┌─ Python（界面，PySide6）────────┐        ┌─ C++17 ───────────────────┐
 │  main.py                        │        │  gomoku_engine            │
 │    └ RoomClient                 │        │   ├ Board（位棋盘）       │
 │         └ Room → AIPlayer       │  TCP   │   ├ evaluate（增量）      │
@@ -535,9 +535,8 @@ Copyright (C) 2026 YFY0109 <yfy0109@qq.com>
 
 ### 为什么是 GPLv3
 
-界面基于 **PyQt5**，它本身是 GPLv3（Riverbank 只提供 GPLv3 或商业许可）。链接它的
-二进制整体已被 GPLv3 覆盖。仓库原先的 GPL-2.0 文本没有 "or later" 条款，读法是
-GPL-2.0-only，与 GPLv3 的 PyQt5 不兼容。
+界面基于 **PySide6**（Qt 6 官方绑定，LGPLv3）。i386 与 armv7 两个 32 位包退回
+**PyQt5**（Qt 6 没有 32 位轮子）。源码许可是 GPL-3.0-or-later，两条路都覆盖。
 
 ### 第三方数据
 
@@ -552,6 +551,7 @@ Gomocup 2026 开局线（`data/gomocup_2026.json` 及其两份生成镜像）转
 
 | 版本 | 日期 | 内容 |
 |---|---|---|
+| **v4.5.0** | 2026-11-17 | **界面迁移到 Qt 6（PySide6），32 位构建保留 PyQt5。** `qt_compat` 统一收口：有 PySide6 就用，i386/armv7 没有 Qt 6 轮子时退回 PyQt5；信号仍叫 `pyqtSignal`，界面代码里没有绑定判断。打包同样分流：64 位装 `PySide6-Essentials`，32 位容器用 apt 的 PyQt5。冻结产物排掉 WebEngine、Qt3D、Charts、QML、SQL、PDF、Qt 翻译表、GTK 主题插件、图片格式与嵌入式平台插件，并 strip 符号表；AppImage **53.3 MB**（上一版 51.6 MB），Windows 安装包 35.3 MB（上一版 37.5 MB）。空闲内存实测 157 MB（此前 134 MB），Qt 6 的库本身更大；空闲 CPU 持平。 |
 | **v4.4.2** | 2026-11-14 | **更新提示改成进度窗口，自动更新改用系统代理。** 「发现新版本」点「是」原来只是打开设置页，还得再点一次「下载并安装」并盯着百分比；现在直接弹出下载窗，按字节推进度，校验后安装、重启、退出。另一半是它为什么慢：Linux 桌面的代理写在 gsettings 或 `kioslaverc` 里，而 Python 的 urllib 只读环境变量，于是浏览器走代理飞快、更新器走直连慢慢爬（37 MB 的包 30 秒才 4%）。`system_proxy()` 现在三处都读，下载镜像不再强制直连，代理连不上时退回直连一次，直连时**优先解析 IPv4** —— 同一个文件在这张网里 IPv6 只有 142 KB/s、IPv4 有 2.5 MB/s，浏览器靠 Happy Eyeballs 把差异藏了起来。同一个 37 MB 的包实测直连 3 MB/s、走代理 15 MB/s。启动检查改成胶囊开关，下面写明关掉之后手动检查仍然可用，并可选 每次启动 / 每天 / 每周 的频率。 |
 | **v4.4.1** | 2026-11-14 | **网页版（B 站 Toy）补上 v4.4.0 的棋盘尺寸，复盘也可以换一档强度重来。** 9/13/15/19 可选，默认 **15×15**；每个尺寸单独编一份 wasm（`gomoku-<规则>-<n>.js`，共八份）与单独一张明文开局库，入门档在每个尺寸上都能查到库里的应手。联机 `state` 带尺寸，加入方跟随房主。原来复盘强度选错只剩「取消」，只能看半截结果；桌面版复盘进度页与网页版进度遮罩都新增 **「重选强度」**，停掉本轮、丢掉已算记录、退回强度页。顺带修好 wasm 构建：v4.4.0 的搜索开始引用开局库与 DFPN 之后，网页版一直链接失败。 |
 | **v4.4.0** | 2026-11-13 | **四种棋盘尺寸、官方开局库、自动更新、Linux 改发 AppImage。** 棋盘尺寸可选 —— 9/13/15/19，默认 **15×15**。C++ 侧每个尺寸单独编译（`-DGOMOKU_BOARD_SIZE`），共八个二进制，热路径没有多出分支；纯 Python 引擎经 `configure_size()` 重建全部表，两条路径的 Zobrist 都取自同一张 19×19 表，所以 `enhanced=0` 的逐字对拍在每个尺寸上都成立。联机协议的 `welcome` 与 `join` 都带尺寸，不一致在开局前拒绝。**Gomocup 2026 官方开局**以 24 条公布线连同每一段前缀入库，对手照线走就逐手应上；八种 D4 对称在启动时展开成一张 `key → move` 表，查询只在根节点做一次哈希。15×15 与 19×19 是全量（713 条），13×13 保留 22 条（633），9×9 保留 8 条（197）。禁手变体永不启用开局库。**DFPN 证明搜索**分 VCF-only 与 VCT 两版，作为 `std::thread` 与主 PVS 并行，自带棋盘与 arena。A/B 没有过闸 —— 1.5 秒/手、32 局自对弈 + 9 个局面，胜率 50.0%，接管 **0 次** —— 所以 `proof_mode` 六档全为 0。**自动更新**覆盖 Windows 安装版、Windows 便携版与 AppImage：先问站点 `version.json`，回退 GitHub API；`SHA256SUMS` 配分离式 **Ed25519** 签名，验签不过不安装。CI 只建 **draft** Release，离线传签名之后才转正。**Linux 改发 AppImage，八个裸可执行文件取消**；任何构建都能用 `--debug` 或 `GOMOKUAI_LOG=1` 打开日志。 |
